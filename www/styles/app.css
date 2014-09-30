@@ -1,0 +1,332 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+    -ms-content-zooming: none;
+    -ms-user-select: none;
+    overflow: hidden;
+    background: #1b1b1b;
+    background-size: 100%;
+    
+}
+
+a, a:visited {
+    color: #3472a1;
+    text-decoration: none
+}
+
+/* Tabbar icons */
+.fa-tab-bar__icon-home {
+    position: relative;
+    height: 36px;
+}
+.fa-tab-bar__icon-home:before {
+    position: absolute;
+    top: 6px;
+    left: 7px;
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-image: url(../img/icon-home.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 22px auto;
+    content: '';
+}
+.fa-tab-bar__icon-plus {
+    position: relative;
+    height: 36px;
+}
+.fa-tab-bar__icon-plus:before {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-image: url(../img/icon-plus.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 22px auto;
+    content: '';
+}
+.fa-tab-bar__icon-user {
+    position: relative;
+    height: 36px;
+}
+.fa-tab-bar__icon-user:before {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-image: url(../img/icon-user.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: auto 22px;
+    content: '';
+}
+.fa-tab-bar__icon-gear {
+    position: relative;
+    height: 36px;
+}
+.fa-tab-bar__icon-gear:before {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-image: url(../img/icon-gear.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: auto 22px;
+    content: '';
+}
+
+.screen__tabs {
+    display: block;
+}
+
+.screen__tabs .tab-bar {
+    z-index: 1000;
+}
+
+.logo {
+    margin: 0 auto;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.logo-big {
+    margin-bottom: 25px;
+    width: 261px;
+    height: 50px;
+    background-image: url(../img/logo.png);
+}
+
+.logo-small {
+    width: 96px;
+    height: 20px;
+    background-image: url(../img/logo-small.png);
+}
+
+.startup__description {
+    margin: 0 auto 30px;
+    width: 225px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #aeaeae;
+}
+.startup__button, .login__button, .register__button, .savename__button {
+    display: block;
+    margin: 0 auto 10px;
+    width: 225px;
+    text-align: center;
+}
+.startup__button-register {
+    margin-bottom: 0
+}
+
+.login__input, .register__input {
+    margin: 0 auto 10px;
+    display: block;
+    width: 225px;
+}
+.login__back, .register__back {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 0;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+.page--main__content, .profile__header {
+    background: url(../img/timeline-bg.jpg) no-repeat 0 0;
+    background-size: cover;
+    text-align: center;
+}
+.page--main__content {
+
+
+}
+
+.page--settings__content {
+    background: #efeff4;
+}
+
+.settings__integrate {
+    margin-top: 15px;
+}
+
+.settings__text {
+    margin: 15px 10px 30px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #6d6d72;
+}
+.edit_profile__text
+{
+    font-size: 14px;
+    line-height: 20px;
+    color: #6d6d72;
+    padding: 10px;
+}
+
+.page--profile__content {
+    background: #e7e7eb
+}
+
+.profile__avatar {
+    margin: 10px auto 15px;
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.profile__stats {
+    display: block;
+    overflow: hidden;
+}
+
+.profile__stats-item {
+    display: block;
+    width: 100%;
+    float: left;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+}
+.profile__stats-item--large {
+    padding-top: 18px;
+    width: 66.666%;
+    font-size: 12px;
+}
+
+.profile__stats-number {
+    display: block;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: bold;
+}
+
+.profile__button {
+    margin: 15px auto 0;
+    border-radius: 0;
+}
+
+.profile__list-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: none
+}
+
+.profile__empty {
+    /* font-size: 13px; */
+    /* margin: 10px; */
+    /* color: #2f2f2f; */
+}
+.main__empty {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.main__button {
+    margin: 0 auto 10px;
+    border-radius: 0;
+    width: 225px;
+}
+
+input.ng-valid{
+    border: solid 1px white;
+}
+input.ng-invalid{
+    border: solid 1px red;
+}
+.achievements
+{
+    background: #000;
+    overflow: hidden;
+}
+.ach_item
+{
+    padding: 0px;
+    overflow: hidden;
+    border-bottom: 3px black;
+    background: #000;
+    line-height:0px;
+    margin-bottom: 3px;
+}
+.ach_item .points
+{
+    float: right;
+    padding: 0px 10px;
+    /*background: url('../img/ach-medal.svg') no-repeat left;*/
+    font-size: 12px;
+    height: 12px;
+    vertical-align: top;
+}
+.ach_item .points img
+{
+    height: 13px;
+    margin-right: 5px;
+}
+.ach_item .image
+{
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+}
+.ach_item .content
+{
+    background: #1b1b1b;
+    width: 100%;
+    /* padding-left: 10px; */
+    height: auto;
+    /* min-height: 100%; */
+}
+.ach_item .content, .ach_item .image
+{
+    float: left;
+}
+
+.ach_item .title
+{
+    color: white;  
+    line-height:12px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.ach_item .title, .ach_item .description
+{
+    font-size: 14px;
+
+}
+.ach_item .description
+{
+    color:#bfbfbf;
+    line-height: 16px;
+}

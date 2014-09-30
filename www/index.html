@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, height=device-height">
+        <title>Achieve.Me</title>  
+
+        <link rel="stylesheet" href="css/animate.css"> 
+
+        <link rel="stylesheet" href="lib/onsen/css/onsenui.css">  
+        <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">  
+        <link rel="stylesheet" href="styles/app.css"/>
+
+        <script src="lib/jquery-1.11.1.min.js"></script>
+        <script src="lib/fastclick.js"></script>
+
+        <script src="lib/onsen/js/angular/angular-file-upload-shim.min.js"></script> 
+        <script src="lib/onsen/js/angular/angular.js"></script> 
+        <script src="lib/onsen/js/angular/angular-touch.js"></script>         
+        <script src="lib/onsen/js/angular/angular-file-upload.min.js"></script> 
+
+        <script src="lib/onsen/js/onsenui.js"></script>    
+
+        <script src="cordova.js"></script>
+        <script src="js/app.js"></script> 
+
+    </head>
+
+    <body>
+    <ons-tabbar class="screen__tabs" id="screenTabs" var="screenTabs" hide-tabs="true" animation="fade">
+
+        <ons-tabbar-item
+            class="screen__tabs-login"
+            icon="lock"
+            active="true"
+            page="startup.html">
+        </ons-tabbar-item>
+
+        <!--ons-tabbar-item
+            icon="tab-bar__icon-home"
+            page="main.html">
+        </ons-tabbar-item-->
+
+        <ons-tabbar-item
+            icon="tab-bar__icon-plus"
+            page="add.html">
+        </ons-tabbar-item>
+
+        <ons-tabbar-item
+            icon="tab-bar__icon-user"
+            page="profile.html">
+        </ons-tabbar-item>
+
+        <!--ons-tabbar-item
+            icon="tab-bar__icon-gear"
+            page="settings.html">
+        </ons-tabbar-item-->
+
+    </ons-tabbar>
+    <script type="text/ons-template" id="startup.html">
+        <ons-navigator id="screenNav"  var="nav">
+        <ons-page modifier="startup" id="startup.html" >
+        <ons-row style="height:100%">
+        <ons-col align="center">        
+        <div ng-controller="StartUp">
+        <div class="startup__logo logo logo-big"></div>
+        <p class="startup__description">
+        {{startText}}
+        </p>
+        <ons-button modifier="red" class="startup__button startup__button-login" ng-click="ons.navigator.pushPage('login.html')">
+        Вход
+        </ons-button>
+        <ons-button modifier="blue" class="startup__button startup__button-register" ng-click="ons.navigator.pushPage('register.html')">
+        Регистрация
+        </ons-button>
+        </div>
+        </ons-col>
+        </ons-row>
+        </ons-page>
+        </ons-navigator>
+    </script>
+    <script type="text/ons-template" id="login.html">
+        <ons-page modifier="login" id="login.html">
+        <ons-row style="height:100%">
+        <ons-col align="center">
+        <div class="logo logo-big"></div>
+        <form ng-submit="submit()" ng-controller="formLogin"  id="frmLogin" class="login__form" method="post">
+        <input class="login__input login__input-email" type="email" ng-model="email" name="email" placeholder="Email" required="1"> 
+        <input class="login__input login__input-password" type="password" ng-minlength="3"  ng-model="password" name="password" placeholder="Пароль" required="1"> 
+        <!--ons-button modifier="red" class="login__button" >
+        Вход
+        </ons-button-->
+        <input type="submit" value="Вход"   class="register__button button--red button" />
+        </form>
+        <a class="login__back" onclick="ons.navigator.popPage(); return false;">&#60;&nbsp;&nbsp;Назад</a>
+        </ons-col>
+        </ons-row>
+        </ons-page>
+    </script>
+    <script type="text/ons-template" id="register.html">
+        <ons-page modifier="register" id="register.html">
+        <ons-row style="height:100%">
+        <ons-col align="center">
+        <div class="logo logo-big"></div>
+        <form id="frmRegister" ng-submit="submit()" ng-controller="formRegister" class="register__form" method="post">
+        <input class="register__input register__input-email" type="email" ng-model="email" name="email" placeholder="Email" required="1"> 
+        <input class="register__input register__input-password" ng-minlength="3" type="password" ng-model="password" name="password" placeholder="Пароль" required="true"> 
+        <!--ons-button ng-click="register()"  modifier="blue" class="register__button">
+        Регистрация  
+        </ons-button-->
+        <input type="submit" value="Регистрация" modifier="blue" class="register__button button--blue button" />
+        </form>
+        <a class="register__back"  onclick="ons.navigator.popPage(); return false;">&#60;&nbsp;&nbsp;Назад</a>
+
+        </ons-col>
+        </ons-row>
+        </ons-page>
+    </script>
+    <!--script type="text/ons-template" id="main.html">
+        <ons-page modifier="main" id="main.html">
+        <ons-toolbar>
+        <div class="center">
+        <div class="logo logo-small"></div>
+        </div>
+        </ons-toolbar>
+        <ons-row style="height: 100%">
+        <ons-col align="center">
+        <p class="main__empty">
+        Страница в разработке <br/>здесь будет <br/>лента обновлений<br/> и поиск друзей :(
+        </p>
+        <ons-button modifier="red" class="main__button">
+        Пригласить друзей
+        </ons-button>
+        <ons-button modifier="red" class="main__button">
+        Поиск по имени
+        </ons-button>
+        <ons-button modifier="red" class="main__button">
+        Рекомендуемые пользователи
+        </ons-button>
+        </ons-col>
+        </ons-row>
+        </ons-page>
+    </script-->
+    <script type="text/ons-template" id="add.html">
+        <ons-page modifier="main" id="add.html">
+            <div ng-controller="AddAchievement" >
+               <ons-toolbar>
+               <div class="center">
+                Получить достижение
+               </div>
+               </ons-toolbar>
+                <ons-list class="achievements">
+                    <ons-list-item  class="ach_item"  ng-repeat="item in items">
+                        <div class="content" ng-style="styleContent" ng-click="unlockAchievement();"    >
+                            <div class="image"><img src="img/ach-default.png" width="100%" height="100%" alt="" /></div>
+                            <div class="title">{{item.title}} <span class="points"><img src="img/ach-medal.svg" alt="" />{{item.points}}</span></div>
+                            <div class="description">{{item.description}}</div>
+                        </div>
+                    </ons-list-item>
+                </ons-list>
+           </div>
+        </ons-page>
+    </script>
+    <!--script type="text/ons-template" id="settings.html">
+        <ons-page modifier="settings" id="settings.html">
+        <ons-toolbar>
+        <div class="center">
+        Настройки
+        </div>
+        </ons-toolbar>
+        <ons-list class="settings__integrate">
+        <ons-list-item>
+            Страница в разработке
+        </ons-list-item>
+        <ons-list-item>
+        Интеграция с соц. сетями <ons-switch modifier="list-item"></ons-switch>
+        </ons-list-item>
+        </ons-list>
+        <p class="settings__text">
+        Вконтакте, Facebook, Google+, Mail.ru, Одноклассники. Все полученные достижения будут автоматически поститься на вашей странице в соц. сетях.
+        </p>
+        <ons-list class="settings__find">
+        <ons-list-header>Найти друзей</ons-list-header>
+        <ons-list-item modifier="chevron" onclick="myNavigator.pushPage('page2.html', { animation : 'slide' } )">
+        Поиск по имени
+        </ons-list-item>
+        <ons-list-item modifier="chevron" onclick="myNavigator.pushPage('page4.html', { animation : 'slide' } )">
+        Друзья из соц. сетей
+        </ons-list-item>
+        <ons-list-item modifier="chevron" onclick="myNavigator.pushPage('page5.html', { animation : 'slide' } )">
+        Рекомендуемые пользователи
+        </ons-list-item>
+        </ons-list>
+        <ons-list>
+          <ons-list-header></ons-list-header>
+            <ons-list-item modifier="chevron" onclick="myNavigator.pushPage('page5.html', { animation : 'slide' } )">
+                Сменить пользователя
+            </ons-list-item>
+        </ons-list>
+        </ons-page>
+    </script-->
+    <script type="text/ons-template" id="profile.html">
+        <ons-navigator>
+        <ons-page modifier="profile" id="profile.html" >
+            <div ng-controller="Profile">
+                <div ng-controller="Profile" >
+                <ons-toolbar>
+                <div class="center">
+                {{userName}}
+                </div>
+                </ons-toolbar>
+                <ons-row class="profile__header" style="height: 300px">
+                <ons-col align="center">
+                <img class="profile__avatar" src="{{userPhoto}}"/>
+                <div class="profile__stats">
+                <!--div class="profile__stats-item">
+                <span class="profile__stats-number">0</span>
+                Подписок
+                </div-->
+                <!--div class="profile__stats-item">
+                <span class="profile__stats-number">0</span>
+                Подписчиков
+                </div-->
+                <div class="profile__stats-item">
+                <span class="profile__stats-number">{{countAch}}</span>
+                Достижений
+                </div>
+                <!--div class="profile__stats-item">
+                <span class="profile__stats-number">1</span>
+                Уровень
+                </div-->
+                <!--div class="profile__stats-item profile__stats-item--large">
+                100 очков до 2 уровня
+                </div-->
+                </div>
+                <ons-button modifier="red" class="profile__button" ng-click="ons.navigator.pushPage('edit-profile.html')">
+                Изменить профиль
+                </ons-button>
+                </ons-col>
+                </ons-row>
+                <ons-row>
+                <ons-col>
+                <ons-list class="achievements">
+                <ons-list-header class="profile__list-header">Все достижения</ons-list-header>
+                    <ons-list-item  class="ach_item"  ng-repeat="item in items">
+                        <div class="content">
+                            <div class="image"><img src="img/ach-default.png" width="100%" height="100%" alt="" /></div>
+                            <div class="title">{{item.title}} <span class="points"><img src="img/ach-medal.svg" alt="" />{{item.points}}</span></div>
+                            <div class="description">{{item.description}}</div>
+                        </div>
+                    </ons-list-item>
+                </ons-list>
+
+                <!--p class="profile__empty">
+                У вас нет записей. <a href="javascript:;" onclick="screenTabs.setActiveTab(2);">Добавить достижение</a>
+                </p-->
+
+                </ons-col>
+                </ons-row>
+                </div>
+            </div>  
+        </ons-page>
+        </ons-navigator>
+    </script>
+    <script type="text/ons-template" id="edit-profile.html">
+        <ons-page modifier="settings" id="edit-profile.html">
+        <br />
+        <ons-toolbar>
+        <div class="left"><ons-back-button></ons-back-button></div>
+        <div class="center">
+        Изменить профиль
+        </div>
+        </ons-toolbar>
+        <div ng-controller="editProfile" >
+        <ons-list class="settings__find">
+        <ons-list-header>Имя</ons-list-header>
+        <ons-list-item>
+        <input type="text" placeholder="Ваше имя" ng-model="userName" ng-blur="changeName()" value="{{userName}}" class="text-input text-input--transparent" style="margin-top:4px; width:100%;">
+        </ons-list-item>
+        </ons-list>
+        <br />
+        <ons-list class="settings__find">
+        <ons-list-header>Аватар</ons-list-header>
+        <ons-list-item>
+        <img src="{{userPhoto}}" style="height: 30px; float: left; margin-top: 7px" />
+        <input type="file" accept="images/*"  ng-file-select="changePhoto($files)" ng-model="uploadPhoto"   class="file-input" style="margin-left:10px;">
+
+        </ons-list-item>
+        </ons-list>
+        <p class="edit_profile__text"> Максимальный размер файла: 2Мб. Изменения сохранятся автоматически.</p>
+        <p class="edit_profile__text status">{{uploadStatus}}</p>
+        </div>
+        </ons-page>
+    </script>
+
+    <!--script type="text/ons-template" id="edit-name.html">
+        <ons-page modifier="settings" id="edit-name.html">
+        <br />
+        <ons-toolbar>
+        <div class="left"><ons-back-button></ons-back-button></div>
+        <div class="center">
+        Изменить имя
+        </div>
+        </ons-toolbar>
+            <ons-list-header>Ваше Имя</ons-list-header>
+            <form id="formUserName"    method="post">
+            <ons-list>
+                <ons-list-item  >
+                        <input type="text" placeholder="Ваше имя" class="text-input text-input--transparent" style="margin-top:4px; width: 100%;">
+                </ons-list-item>
+            </ons-list>
+            <div class="content-padded">
+                <ons-button modifier="blue" class="button savename__button button--blue" style="margin-top:4px; width: 100%;"   onclick="">
+                    Сохранить
+                </ons-button>
+            </div> 
+        </form>
+        </ons-page>
+    </script>
+        <script type="text/ons-template" id="edit-avatar.html">
+        <ons-page modifier="settings" id="edit-avatar.html">
+        <br />
+        <ons-toolbar>
+        <div class="left"><ons-back-button></ons-back-button></div>
+        <div class="center">
+        Изменить аватар
+        </div>
+        </ons-toolbar>
+            <ons-list-header>Ваш Аватар</ons-list-header>
+            <form id="formUserName"    method="post">
+            <ons-list>
+                <ons-list-item  >
+                        <input type="file" placeholder="Name" class="file-input" style="width: 100%;">
+                </ons-list-item>
+            </ons-list>
+            <div class="content-padded">
+                <ons-button modifier="blue" class="button savename__button button--blue" style="margin-top:4px; width: 100%;"   onclick="">
+                    Сохранить
+                </ons-button>
+            </div> 
+        </form>
+        </ons-page>
+    </script-->
+
+
+    <script>
+function gotoStart() {
+    var tabBar = $('#screenTabs')
+            .removeClass('screen__tabs-hidden')
+            .find('.tab-bar');
+
+    tabBar
+            .find('.screen__tabs-login')
+            .hide();
+
+    tabBar
+            .removeClass('ng-hide')
+            .addClass('animated fadeInUp');
+
+    screenTabs.setActiveTab(2);
+}
+
+$(function () {
+    FastClick.attach(document.body);
+});
+    </script>
+</body>
+</html>
